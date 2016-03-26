@@ -3,9 +3,10 @@ package ro.pub.cs.systems.eim.lab01.myfirstandroidapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,8 +26,16 @@ public class MainActivity extends AppCompatActivity {
             greetingTextView.setAlpha(1);
 
             // TODO: exercise 9a
+            String greetings = greetingTextView.getText().toString();
+            String userName = userNameEditText.getText().toString();
+            String newGreetings = greetings.replace("xxx", userName);
+            greetingTextView.setText(newGreetings);
 
             // TODO: exercise 9b
+            AlphaAnimation fadeEffect = new AlphaAnimation(1.0f, 0.0f);
+            fadeEffect.setDuration(TRANSPARENCY_EFFECT_DURATION);
+            fadeEffect.setFillAfter(true);
+            greetingTextView.setAnimation(fadeEffect);
         }
 
     }
